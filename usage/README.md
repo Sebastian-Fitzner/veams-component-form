@@ -7,7 +7,7 @@ This blueprint is based on the blueprint of Veams-Components.
 ### Include: Page
 
 ``` hbs
-{{! @INSERT :: START @id: form, @tag: component
+{{! @INSERT :: START @id: form, @tag: component }}
 {{! WrapWith START: Form Wrapper }}
 {{#with form-bp}}
 	{{#wrapWith "c-form"
