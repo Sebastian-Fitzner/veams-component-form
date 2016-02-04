@@ -1,6 +1,6 @@
 {
-	"name": "veams-component-accordion",
-	"version": "0.0.1",
+	"name": "veams-component-form",
+	"version": "1.0.0",
 	"ignore": [
 		".bowerrc",
 		".gitignore",
@@ -15,6 +15,6 @@
 	],
 	"repository": {
 	  "type": "git",
-	  "url": "git://github.com/Veams/veams-component-accordion.git"
+	  "url": "git://github.com/Veams/veams-component-form.git"
 	}
 }
