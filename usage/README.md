@@ -28,7 +28,7 @@ This blueprint is based on the blueprint of Veams-Components.
 ### Include: SCSS
 
 ``` scss
-// @INSERT :: START @id: scss-import
+// @INSERT :: START @tag: scss-import 
 @import "components/_c-form";
 // @INSERT :: END
 ```
@@ -37,14 +37,14 @@ This blueprint is based on the blueprint of Veams-Components.
 
 #### Import
 ``` js
-// @INSERT :: START @id: js-import
+// @INSERT :: START @tag: js-import 
 import FormAjax from './modules/form/form-ajax';
 // @INSERT :: END
 ```
 
 #### Initializing in Veams V2
 ``` js
-// @INSERT :: START @id: js-init-v2
+// @INSERT :: START @tag: js-init-v2 
 /**
  * Init Form
  */
@@ -58,7 +58,7 @@ Helpers.loadModule({
 
 #### Initializing in Veams V3
 ``` js
-// @INSERT :: START @id: js-init-v3
+// @INSERT :: START @tag: js-init-v3  
 /**
  * Init Form
  */
