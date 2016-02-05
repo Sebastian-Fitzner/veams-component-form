@@ -1,11 +1,10 @@
 {
 	"name": "veams-component-form",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"ignore": [
 		".bowerrc",
 		".gitignore",
-		"bower.json",
-		"README.md"
+		"bower.json"
 	],
 	"authors": [
 		{
