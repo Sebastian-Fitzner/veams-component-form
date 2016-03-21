@@ -69,3 +69,16 @@ Helpers.loadModule({
 });
 // @INSERT :: END
 ```
+
+#### Custom Events
+``` js
+// @INSERT :: START @tag: js-events //
+/**
+ * Events Form
+ */
+EVENTS.form = {
+	complete: 'form:complete',
+	reset: 'form:reset'
+};
+// @INSERT :: END
+```
