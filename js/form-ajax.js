@@ -1,6 +1,8 @@
 /**
  * Represents a ajax form class.
- * @module ajaxForm
+ *
+ * @module FormAjax
+ * @version v1.0.4
  *
  * @author Sebastian Fitzner
  */
@@ -30,6 +32,19 @@ class FormAjax extends AppModule {
 		};
 
 		super(obj, options);
+		App.registerModule && App.registerModule(FormAjax.info, this.el);
+	}
+
+	/**
+	 * Get module information
+	 */
+	static get info() {
+		return {
+			name: 'FormAjax',
+			version: '1.0.4',
+			vc: true,
+			mod: false // set to true if source was modified in project
+		};
 	}
 
 	initialize() {

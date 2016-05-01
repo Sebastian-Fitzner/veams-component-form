@@ -1,3 +1,6 @@
+### v1.0.4
+- added global module registry
+
 ### v1.0.3
 - use corresponding js module namespace for events
 - updated events section in usage/README.md
