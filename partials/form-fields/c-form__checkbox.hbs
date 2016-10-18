@@ -5,7 +5,7 @@
 	<div class="form__checkbox-wrapper">
 		{{#each checkboxes}}
 			<div class="form__checkbox-item{{#if wrapperClass}} {{wrapperClass}}{{/if}}">
-				<input id="{{id}}" type="{{../typeOf}}"{{#if checked}} checked{{/if}}
+				<input id="{{id}}" name="{{id}}" type="{{../typeOf}}"{{#if checked}} checked{{/if}}
 				{{#each dataAttr}} {{attrKey}}="{{{attrValue}}}"{{/each}}
 				{{#if required}} required="required"{{/if}}
 				       class="form__checkbox-input{{#if inputClass}} {{inputClass}}{{/if}}"/>

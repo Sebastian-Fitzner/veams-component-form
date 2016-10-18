@@ -1,8 +1,8 @@
 {
-	"options": {
+	"settings": {
 		"context": false,
 		"classes": "is-form",
-		"action": "ajax/test.html",
+		"action": "ajax/test.json",
 		"method": "GET",
 		"ajax": true
 	},

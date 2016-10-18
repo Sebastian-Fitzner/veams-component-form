@@ -2,7 +2,7 @@
  * Represents a ajax form class.
  *
  * @module FormAjax
- * @version v1.0.4
+ * @version v2.0.0
  *
  * @author Sebastian Fitzner
  */
@@ -27,7 +27,7 @@ class FormAjax extends AppModule {
 		let options = {
 			submitOnLoad: false,
 			submitOnChange: true,
-			showLoader: false, // loading class
+			loadingClass: null,
 			eventName: App.EVENTS.form.complete
 		};
 
@@ -41,7 +41,7 @@ class FormAjax extends AppModule {
 	static get info() {
 		return {
 			name: 'FormAjax',
-			version: '1.0.4',
+			version: '2.0.0',
 			vc: true,
 			mod: false // set to true if source was modified in project
 		};
@@ -53,7 +53,9 @@ class FormAjax extends AppModule {
 		this.selects = $('select', this.$el);
 
 		// Fetch data if option is true
-		if (this.options.submitOnLoad) this.fetchData(this.$el);
+		if (this.options.submitOnLoad) {
+			this.fetchData(this.$el);
+		}
 
 		// call super
 		super.initialize();
@@ -63,17 +65,17 @@ class FormAjax extends AppModule {
 	 * Bind all evente
 	 */
 	bindEvents() {
-		let fetchData = this.fetchData.bind(this);
-		let reset = this.resetFilters.bind(this);
+		let fnFetchData = this.fetchData.bind(this);
+		let fnReset = this.resetFilters.bind(this);
 		/**
 		 * On submit event fetch data
 		 */
-		this.$el.on('submit reset', fetchData);
+		this.$el.on(App.EVENTS.submit + ' ' + App.EVENTS.reset, fnFetchData);
 
 		/**
 		 * Reset filters on reset event
 		 */
-		App.Vent.on(App.EVENTS.form.reset, reset);
+		App.Vent.on(App.EVENTS.form.reset, fnReset);
 
 		/**
 		 * If submitOnChange is true
@@ -83,8 +85,7 @@ class FormAjax extends AppModule {
 		 *
 		 */
 		if (this.options.submitOnChange) {
-			this.$el.on('blur change', this.fields, fetchData);
-			App.Vent.on(App.EVENTS.dropdown.changed, fetchData);
+			this.$el.on(App.EVENTS.blur + ' ' + App.EVENTS.change, this.fields, fnFetchData);
 		}
 	}
 
@@ -92,19 +93,22 @@ class FormAjax extends AppModule {
 	/**
 	 * Ajax call to get data object with results or error message.
 	 *
-	 * @param {Object} e - object or event
+	 * @param {Object} e - object or event.
+	 * @param {object} currentTarget - Target to which listener was attached.
 	 */
-	fetchData(e) {
+	fetchData(e, currentTarget) {
 		let el;
 
-		if (e && e.preventDefault) {
-			el = e.target;
+		if (e && typeof e.preventDefault === 'function') {
 			e.preventDefault();
+			el = currentTarget || e.currentTarget ;
 		} else {
 			el = e;
 		}
 
-		if (this.options.showLoader) this.$el.addClass(this.options.showLoader);
+		if (this.options.loadingClass) {
+			this.$el.addClass(this.options.loadingClass);
+		}
 
 		let action = this.$el.attr('action');
 		let method = this.$el.attr('method');
@@ -112,13 +116,16 @@ class FormAjax extends AppModule {
 		let url = action + '?' + serialize;
 
 		$.ajax({
-			dataType: "json",
-			url: url
-		})
-			.done((data) => {
+			url: url,
+			dataType: 'json',
+			success: (data) => {
 				this.onSuccess(data, el);
-			}).
-			fail(this.onError.bind(this));
+			},
+			error: (status, statusText) => {
+				this.onError(status, statusText)
+			}
+		});
+
 	}
 
 	onSuccess(data, el) {
@@ -130,14 +137,22 @@ class FormAjax extends AppModule {
 			el: el
 		});
 
-		if (this.options.showLoader) this.$el.removeClass(this.options.showLoader);
+		if (this.options.loadingClass) {
+			this.$el.removeClass(this.options.loadingClass);
+		}
+
 		this.$el.addClass('is-success');
 	}
 
-	onError() {
-		console.log("error");
-		if (this.options.showLoader) this.$el.removeClass(this.options.showLoader);
+	onError(status, statusText) {
+
+		if (this.options.loadingClass) {
+			this.$el.removeClass(this.options.loadingClass);
+		}
+
 		this.$el.addClass('is-error');
+
+		console.warn('FormAjax:', statusText, '(' + status + ')');
 	}
 
 	/**

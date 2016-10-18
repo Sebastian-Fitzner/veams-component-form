@@ -2,7 +2,30 @@
 
 This blueprint is based on the blueprint of Veams-Components.
 
+## Version
+Latest version is ```v2.0.0```
+
+### JavaScript
+- `Veams-JS >= v4.0.0`
+
 ## Usage
+
+### Options:
+
+#### submitOnLoad
+`Type: boolean` | `Default: false`
+
+Submit form on page load
+
+#### submitOnChange
+`Type: boolean` | `Default: true`
+
+Submit form on change
+
+#### loadingClass
+`Type: string` | `Default: null`
+
+Optional loading class (e.g. for spinner animation)
 
 ### Include: Page
 
@@ -10,16 +33,11 @@ This blueprint is based on the blueprint of Veams-Components.
 {{! @INSERT :: START @id: form, @tag: component-partial }}
 {{! WrapWith START: Form Wrapper }}
 {{#with form-bp}}
-	{{#wrapWith "c-form"
-	context=options.context
-	ajax=options.ajax
-	classes=options.classes
-	method=options.method
-	}}
-		{{#each fieldsets}}
-			{{> c-form__fieldset }}
-		{{/each}}
-	{{/wrapWith}}
+    {{#wrapWith "c-form" settings=this.settings}}
+        {{#each fieldsets}}
+            {{> c-form__fieldset }}
+        {{/each}}
+    {{/wrapWith}}
 {{/with}}
 {{! WrapWith END: Form Wrapper }}
 {{! @INSERT :: END }}
