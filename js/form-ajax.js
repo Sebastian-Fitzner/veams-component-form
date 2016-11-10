@@ -2,7 +2,7 @@
  * Represents a ajax form class.
  *
  * @module FormAjax
- * @version v1.0.4
+ * @version v1.0.5
  *
  * @author Sebastian Fitzner
  */
@@ -41,7 +41,7 @@ class FormAjax extends AppModule {
 	static get info() {
 		return {
 			name: 'FormAjax',
-			version: '1.0.4',
+			version: '1.0.5',
 			vc: true,
 			mod: false // set to true if source was modified in project
 		};
@@ -156,7 +156,7 @@ class FormAjax extends AppModule {
 	 */
 	resetChecks() {
 		this.fields.each(function () {
-			$(this).removeAttr('checked');
+			$(this).prop('checked', false);
 		});
 	}
 
@@ -165,7 +165,7 @@ class FormAjax extends AppModule {
 	 */
 	resetSelects() {
 		this.selects.each(function () {
-			$(this).removeAttr('selected').find('option').eq(0).attr('selected', 'selected');
+			$(this).prop('selectedIndex', 0);
 		});
 	}
 }

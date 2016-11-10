@@ -1,3 +1,6 @@
+### v1.0.5
+- reset properties instead of removing attributes on reset
+
 ### v1.0.4
 - added global module registry
 
