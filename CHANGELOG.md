@@ -1,5 +1,7 @@
 ### v2.0.0
 - make module compatible with VeamsQuery
+- rename option `showLoader` to `loadingClass`
+- add options `successClass` and `errorClass`
 
 ### v1.0.4
 - added global module registry

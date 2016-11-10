@@ -25,7 +25,17 @@ Submit form on change
 #### loadingClass
 `Type: string` | `Default: null`
 
-Optional loading class (e.g. for spinner animation)
+Optional class to be set while fetching data from server
+
+#### successClass
+`Type: string` | `Default: 'is-success'`
+
+Class to be set after data was fetched successfully
+
+#### errorClass
+`Type: string` | `Default: 'is-error'`
+
+Class to be set after fetching data failed for some reason
 
 ### Include: Page
 
