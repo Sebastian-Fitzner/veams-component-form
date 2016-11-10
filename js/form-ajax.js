@@ -28,6 +28,8 @@ class FormAjax extends AppModule {
 			submitOnLoad: false,
 			submitOnChange: true,
 			loadingClass: null,
+			successClass: 'is-success',
+			errorClass: 'is-error',
 			eventName: App.EVENTS.form.complete
 		};
 
@@ -141,7 +143,7 @@ class FormAjax extends AppModule {
 			this.$el.removeClass(this.options.loadingClass);
 		}
 
-		this.$el.addClass('is-success');
+		this.$el.addClass(this.options.successClass);
 	}
 
 	onError(status, statusText) {
@@ -150,7 +152,7 @@ class FormAjax extends AppModule {
 			this.$el.removeClass(this.options.loadingClass);
 		}
 
-		this.$el.addClass('is-error');
+		this.$el.addClass(this.options.errorClass);
 
 		console.warn('FormAjax:', statusText, '(' + status + ')');
 	}
@@ -171,7 +173,7 @@ class FormAjax extends AppModule {
 	 */
 	resetChecks() {
 		this.fields.each(function () {
-			$(this).removeAttr('checked');
+			$(this).prop('checked', false);
 		});
 	}
 
@@ -180,7 +182,7 @@ class FormAjax extends AppModule {
 	 */
 	resetSelects() {
 		this.selects.each(function () {
-			$(this).removeAttr('selected').find('option').eq(0).attr('selected', 'selected');
+			$(this).prop('selectedIndex', 0);
 		});
 	}
 }
