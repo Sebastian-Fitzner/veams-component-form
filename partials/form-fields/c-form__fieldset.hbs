@@ -1,37 +1,16 @@
 ---
-component: fieldset
+publish: false
 ---
+<fieldset class="form__fieldset{{#if settings.fieldsetClasses}} {{settings.fieldsetClasses}}{{/if}}">
+	{{#if content.legend}}
+		<legend class="form__legend{{#if settings.legendClasses}} {{settings.legendClasses}}{{/if}}">
+			{{content.legend}}
+			{{#if content.requiredNote}}
+				<em class="form__required-note">{{content.requiredNote}}</em>
+			{{/if}}
+		</legend>{{/if}}
 
-<fieldset class="form__fieldset{{#if fieldsetClasses}} {{fieldsetClasses}}{{/if}}">
-	<legend class="form__legend{{#if legendClasses}} {{legendClasses}}{{/if}}">{{ legend }}</legend>
-	<div class="form__row{{#if rowClasses}} {{rowClasses}}{{/if}}">
-
-		{{#each data}}
-			<div class="form__col{{#if colClasses}} {{colClasses}}{{/if}}">
-
-				{{#is typeOf "input"}}
-					{{> c-form__input }}
-
-				{{else}}{{#is typeOf "textarea"}}
-					{{> c-form__textarea }}
-
-				{{ else }}{{#is typeOf "select"}}
-					{{> c-form__select }}
-
-				{{ else }}{{#is typeOf "info"}}
-					{{> c-form__info }}
-
-				{{ else }}{{#is typeOf "radio"}}
-					{{> c-form__radio ../this }}
-
-				{{ else }}{{#is typeOf "checkbox"}}
-					{{> c-form__checkbox ../this }}
-
-				{{ else }}{{#is typeOf "submit"}}
-					{{> c-form__submit }}
-
-				{{/is}}{{/is}}{{/is}}{{/is}}{{/is}}{{/is}}{{/is}}
-			</div>
-		{{/each}}
-	</div>
+	{{#each content.rows}}
+		{{>c-form__row this}}
+	{{/each}}
 </fieldset>

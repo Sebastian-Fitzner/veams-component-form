@@ -1,17 +1,16 @@
+---
+publish: false
+---
 <div class="form__checkbox">
-	<div class="form__label-wrapper{{#if labelClasses}} {{labelClasses}}{{/if}}">
-		<strong class="form__checkbox-legend">{{label}}</strong>
+	<div class="form__label-wrapper{{#if settings.labelClasses}} {{settings.labelClasses}}{{/if}}">
+		<strong class="form__checkbox-legend">{{content.label}}</strong>
 	</div>
 	<div class="form__checkbox-wrapper">
-		{{#each checkboxes}}
-			<div class="form__checkbox-item{{#if wrapperClass}} {{wrapperClass}}{{/if}}">
-				<input id="{{id}}" name="{{id}}" type="{{../typeOf}}"{{#if checked}} checked{{/if}}
-				{{#each dataAttr}} {{attrKey}}="{{{attrValue}}}"{{/each}}
-				{{#if required}} required="required"{{/if}}
-				       class="form__checkbox-input{{#if inputClass}} {{inputClass}}{{/if}}"/>
-				<label for="{{ id }}" class="form__checkbox-label{{#if labelClasses}} {{labelClasses}}{{/if}}">{{{ label }}}{{#if required}} <abbr title="Required">*</abbr>{{/if}}
-				</label>
-			</div>
+		{{#if content.headline}}
+			<h2 class="form__checkbox-headline">{{content.headline}}</h2>
+		{{/if}}
+		{{#each content.checkboxes}}
+			{{> c-form__checkbox-item required=../settings.required}}
 		{{/each}}
 	</div>
 </div>
