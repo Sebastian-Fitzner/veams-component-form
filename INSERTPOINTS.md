@@ -17,12 +17,12 @@
 ### Include: SCSS
 
 ``` scss
-// @INSERT :: START @tag: scss-import 
+// @INSERT :: START @tag: scss-import //
 @import "components/_c-form";
 @import "components/_c-form__datepicker";
 // @INSERT :: END
 
-// @INSERT :: START @tag: scss-import-self-contained  
+// @INSERT :: START @tag: scss-self-contained-import //   
 @import "../templating/partials/components/form/scss/_c-form";
 @import "../templating/partials/components/form/scss/_c-form__datepicker";
 // @INSERT :: END
@@ -32,12 +32,12 @@
 
 #### Import
 ``` js
-// @INSERT :: START @tag: js-import 
+// @INSERT :: START @tag: js-import //
 import FormAjax from './modules/form/form-ajax';
 import FormDatepicker from './modules/form/form-datepicker';
 // @INSERT :: END// 
 
-@INSERT :: START @tag: js-import-self-contained 
+@INSERT :: START @tag: js-self-contained-import // 
 import FormAjax from '../templating/partials/components/form/js/form-ajax';
 import FormDatepicker from '../templating/partials/components/form/js/form-datepicker';
 // @INSERT :: END
@@ -45,7 +45,7 @@ import FormDatepicker from '../templating/partials/components/form/js/form-datep
 
 #### Initializing in Veams V2
 ``` js
-// @INSERT :: START @tag: js-init-v2 
+// @INSERT :: START @tag: js-init-v2 //
 /**
  * Init AJAX Form
  */
@@ -68,7 +68,7 @@ Helpers.loadModule({
 
 #### Initializing in Veams V3
 ``` js
-// @INSERT :: START @tag: js-init-v3  
+// @INSERT :: START @tag: js-init-v3 //
 /**
  * Init AJAX Form
  */
