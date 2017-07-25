@@ -43,49 +43,25 @@ import FormDatepicker from '../templating/partials/components/form/js/form-datep
 // @INSERT :: END
 ```
 
-#### Initializing in Veams V2
+#### Initializing in Veams V5
 ``` js
-// @INSERT :: START @tag: js-init-v2 //
-/**
- * Init AJAX Form
- */
-Helpers.loadModule({
-	el: '[data-js-module="form-ajax"]',
-	module: FormAjax,
-	context: context
-});
-
-/**
- * Init Form Datepicker
- */
-Helpers.loadModule({
-	el: '[data-js-module="form-datepicker"]',
-	module: FormDatepicker,
-	context: context
-});
-// @INSERT :: END
-```
-
-#### Initializing in Veams V3
-``` js
-// @INSERT :: START @tag: js-init-v3 //
-/**
- * Init AJAX Form
- */
-Helpers.loadModule({
-	domName: 'form-ajax',
-	module: FormAjax,
-	context: context
-});
-
-/**
- * Init Form Datepicker
- */
-Helpers.loadModule({
-	domName: 'form-datepicker',
-	module: FormDatepicker,
-	context: context
-});
+// @INSERT :: START @tag: js-init-v5 //
+    ,
+    /**
+     * Init AJAX Form
+     */
+    {
+        namespace: 'form-ajax',
+        module: FormAjax
+    )
+    ,
+    /**
+     * Init Form Datepicker
+     */
+    {
+	    namespace: 'form-datepicker',
+	    module: FormDatepicker
+    }
 // @INSERT :: END
 ```
 

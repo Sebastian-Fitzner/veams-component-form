@@ -1,3 +1,6 @@
+### v3.0.0
+- Update source code to support Veams 5 framework
+
 ### v2.0.0
 - make module compatible with VeamsQuery
 - rename option `showLoader` to `loadingClass`

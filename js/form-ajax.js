@@ -2,17 +2,15 @@
  * Represents a ajax form class.
  *
  * @module FormAjax
- * @version v2.0.0
+ * @version v3.0.0
  *
  * @author Sebastian Fitzner
  */
+import { Veams } from 'app';
+import VeamsComponent from 'veams/src/js/common/component';
+const $ = Veams.$;
 
-import App from 'app';
-import AppModule from 'app-module';
-
-const $ = App.$;
-
-class FormAjax extends AppModule {
+class FormAjax extends VeamsComponent {
 	/**
 	 * Constructor for our class
 	 *
@@ -29,11 +27,10 @@ class FormAjax extends AppModule {
 			loadingClass: null,
 			successClass: 'is-success',
 			errorClass: 'is-error',
-			eventName: App.EVENTS.form.complete
+			eventName: Veams.EVENTS.form.complete
 		};
 
 		super(obj, options);
-		App.registerModule && App.registerModule(FormAjax.info, this.el);
 	}
 
 	/**
@@ -41,8 +38,7 @@ class FormAjax extends AppModule {
 	 */
 	static get info() {
 		return {
-			name: 'FormAjax',
-			version: '2.0.0',
+			version: '3.0.0',
 			vc: true,
 			mod: false // set to true if source was modified in project
 		};
@@ -71,12 +67,12 @@ class FormAjax extends AppModule {
 		/**
 		 * On submit event fetch data
 		 */
-		this.$el.on(App.EVENTS.submit + ' ' + App.EVENTS.reset, fnFetchData);
+		this.$el.on(Veams.EVENTS.submit + ' ' + Veams.EVENTS.reset, fnFetchData);
 
 		/**
 		 * Reset filters on reset event
 		 */
-		App.Vent.on(App.EVENTS.form.reset, fnReset);
+		Veams.Vent.on(Veams.EVENTS.form.reset, fnReset);
 
 		/**
 		 * If submitOnChange is true
@@ -86,7 +82,7 @@ class FormAjax extends AppModule {
 		 *
 		 */
 		if (this.options.submitOnChange) {
-			this.$el.on(App.EVENTS.blur + ' ' + App.EVENTS.change, this.fields, fnFetchData);
+			this.$el.on(Veams.EVENTS.blur + ' ' + Veams.EVENTS.change, this.fields, fnFetchData);
 		}
 	}
 
@@ -133,7 +129,7 @@ class FormAjax extends AppModule {
 		this.fields = $('input', this.$el);
 		this.selects = $('select', this.$el);
 
-		App.Vent.trigger(this.options.eventName, {
+		Veams.Vent.trigger(this.options.eventName, {
 			data: data,
 			el: el
 		});

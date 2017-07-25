@@ -7,13 +7,13 @@
  * @author Sang-In Haetzel
  * @author Sebastian Fitzner
  */
-import App from 'app';
-import AppModule from 'app-module';
-const $ = App.$;
 require('moment');
+import { Veams } from 'app';
+import VeamsComponent from 'veams/src/js/common/component';
+const $ = Veams.$;
 const Pikaday = require('pikaday');
 
-class FormDatepicker extends AppModule {
+class FormDatepicker extends VeamsComponent {
 	/**
 	 * Constructor for our class
 	 *
@@ -26,7 +26,6 @@ class FormDatepicker extends AppModule {
 	constructor(obj) {
 		let options = {};
 		super(obj, options);
-		App.registerModule && App.registerModule(FormDatepicker.info, this.el);
 	}
 
 	/**
@@ -76,7 +75,7 @@ class FormDatepicker extends AppModule {
 	 * Initialize class
 	 */
 	initialize() {
-		let i18n = App.i18n && App.i18n.datepicker ? App.i18n.datepicker : this.i18nFallback;
+		let i18n = Veams.i18n && Veams.i18n.datepicker ? Veams.i18n.datepicker : this.i18nFallback;
 
 		let _this = this;
 		this.$input = $('input', this.$el);
@@ -90,7 +89,6 @@ class FormDatepicker extends AppModule {
 				_this.$input.val(_this.date);
 			}
 		});
-		super.initialize();
 	}
 }
 // Returns constructor

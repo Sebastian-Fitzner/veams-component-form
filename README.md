@@ -6,11 +6,13 @@ The form component is a complete solution for your forms. It provides
 - custom styles for checkboxes and radio buttons
 - jQuery-free.
 
-## Version
-Latest version is ```v2.0.1```
 
-### JavaScript
-- `Veams-JS >= v4.0.0`
+-----------
+
+## Requirements
+- `Veams >= v5.0.0` - Veams Framework.
+
+-----------
 
 ## Usage
 
