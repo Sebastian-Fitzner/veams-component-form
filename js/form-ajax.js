@@ -2,37 +2,39 @@
  * Represents a ajax form class.
  *
  * @module FormAjax
+<<<<<<< HEAD
  * @version v1.0.5
+=======
+ * @version v3.0.0
+>>>>>>> dev
  *
  * @author Sebastian Fitzner
  */
+import { Veams } from 'app';
+import VeamsComponent from 'veams/src/js/common/component';
+const $ = Veams.$;
 
-import Helpers from '../../utils/helpers';
-import App from '../../app';
-import AppModule from '../_global/module';
-
-const $ = App.$;
-
-class FormAjax extends AppModule {
+class FormAjax extends VeamsComponent {
 	/**
 	 * Constructor for our class
 	 *
 	 * @see module.js
 	 *
-	 * @param {obj} obj - Object which is passed to our class
-	 * @param {obj.el} obj - element which will be saved in this.el
-	 * @param {obj.options} obj - options which will be passed in as JSON object
+	 * @param {Object} obj - Object which is passed to our class
+	 * @param {Object} obj.el - element which will be saved in this.el
+	 * @param {Object} obj.options - options which will be passed in as JSON object
 	 */
 	constructor(obj) {
 		let options = {
 			submitOnLoad: false,
 			submitOnChange: true,
-			showLoader: false, // loading class
-			eventName: App.EVENTS.form.complete
+			loadingClass: null,
+			successClass: 'is-success',
+			errorClass: 'is-error',
+			eventName: Veams.EVENTS.form.complete
 		};
 
 		super(obj, options);
-		App.registerModule && App.registerModule(FormAjax.info, this.el);
 	}
 
 	/**
@@ -40,8 +42,7 @@ class FormAjax extends AppModule {
 	 */
 	static get info() {
 		return {
-			name: 'FormAjax',
-			version: '1.0.5',
+			version: '3.0.0',
 			vc: true,
 			mod: false // set to true if source was modified in project
 		};
@@ -53,7 +54,9 @@ class FormAjax extends AppModule {
 		this.selects = $('select', this.$el);
 
 		// Fetch data if option is true
-		if (this.options.submitOnLoad) this.fetchData(this.$el);
+		if (this.options.submitOnLoad) {
+			this.fetchData(this.$el);
+		}
 
 		// call super
 		super.initialize();
@@ -63,17 +66,17 @@ class FormAjax extends AppModule {
 	 * Bind all evente
 	 */
 	bindEvents() {
-		let fetchData = this.fetchData.bind(this);
-		let reset = this.resetFilters.bind(this);
+		let fnFetchData = this.fetchData.bind(this);
+		let fnReset = this.resetFilters.bind(this);
 		/**
 		 * On submit event fetch data
 		 */
-		this.$el.on('submit reset', fetchData);
+		this.$el.on(Veams.EVENTS.submit + ' ' + Veams.EVENTS.reset, fnFetchData);
 
 		/**
 		 * Reset filters on reset event
 		 */
-		App.Vent.on(App.EVENTS.form.reset, reset);
+		Veams.Vent.on(Veams.EVENTS.form.reset, fnReset);
 
 		/**
 		 * If submitOnChange is true
@@ -83,8 +86,7 @@ class FormAjax extends AppModule {
 		 *
 		 */
 		if (this.options.submitOnChange) {
-			this.$el.on('blur change', this.fields, fetchData);
-			App.Vent.on(App.EVENTS.dropdown.changed, fetchData);
+			this.$el.on(Veams.EVENTS.blur + ' ' + Veams.EVENTS.change, this.fields, fnFetchData);
 		}
 	}
 
@@ -92,19 +94,22 @@ class FormAjax extends AppModule {
 	/**
 	 * Ajax call to get data object with results or error message.
 	 *
-	 * @param {Object} e - object or event
+	 * @param {Object} e - object or event.
+	 * @param {object} currentTarget - Target to which listener was attached.
 	 */
-	fetchData(e) {
+	fetchData(e, currentTarget) {
 		let el;
 
-		if (e && e.preventDefault) {
-			el = e.target;
+		if (e && typeof e.preventDefault === 'function') {
 			e.preventDefault();
+			el = currentTarget || e.currentTarget ;
 		} else {
 			el = e;
 		}
 
-		if (this.options.showLoader) this.$el.addClass(this.options.showLoader);
+		if (this.options.loadingClass) {
+			this.$el.addClass(this.options.loadingClass);
+		}
 
 		let action = this.$el.attr('action');
 		let method = this.$el.attr('method');
@@ -112,32 +117,43 @@ class FormAjax extends AppModule {
 		let url = action + '?' + serialize;
 
 		$.ajax({
-			dataType: "json",
-			url: url
-		})
-			.done((data) => {
+			url: url,
+			dataType: 'json',
+			success: (data) => {
 				this.onSuccess(data, el);
-			}).
-			fail(this.onError.bind(this));
+			},
+			error: (status, statusText) => {
+				this.onError(status, statusText)
+			}
+		});
+
 	}
 
 	onSuccess(data, el) {
 		this.fields = $('input', this.$el);
 		this.selects = $('select', this.$el);
 
-		App.Vent.trigger(this.options.eventName, {
+		Veams.Vent.trigger(this.options.eventName, {
 			data: data,
 			el: el
 		});
 
-		if (this.options.showLoader) this.$el.removeClass(this.options.showLoader);
-		this.$el.addClass('is-success');
+		if (this.options.loadingClass) {
+			this.$el.removeClass(this.options.loadingClass);
+		}
+
+		this.$el.addClass(this.options.successClass);
 	}
 
-	onError() {
-		console.log("error");
-		if (this.options.showLoader) this.$el.removeClass(this.options.showLoader);
-		this.$el.addClass('is-error');
+	onError(status, statusText) {
+
+		if (this.options.loadingClass) {
+			this.$el.removeClass(this.options.loadingClass);
+		}
+
+		this.$el.addClass(this.options.errorClass);
+
+		console.warn('FormAjax:', statusText, '(' + status + ')');
 	}
 
 	/**

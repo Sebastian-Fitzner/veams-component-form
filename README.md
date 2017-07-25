@@ -1,84 +1,44 @@
 # Form
 
-This blueprint is based on the blueprint of Veams-Components.
+The form component is a complete solution for your forms. It provides 
+- ajax functionality
+- a datepicker (pikaday.js)
+- custom styles for checkboxes and radio buttons
+- jQuery-free.
+
+
+-----------
+
+## Requirements
+- `Veams >= v5.0.0` - Veams Framework.
+
+-----------
 
 ## Usage
 
-### Include: Page
+### JavaScript Options:
 
-``` hbs
-{{! @INSERT :: START @id: form, @tag: component-partial }}
-{{! WrapWith START: Form Wrapper }}
-{{#with form-bp}}
-	{{#wrapWith "c-form"
-	context=options.context
-	ajax=options.ajax
-	classes=options.classes
-	method=options.method
-	}}
-		{{#each fieldsets}}
-			{{> c-form__fieldset }}
-		{{/each}}
-	{{/wrapWith}}
-{{/with}}
-{{! WrapWith END: Form Wrapper }}
-{{! @INSERT :: END }}
-```
+#### submitOnLoad
+`Type: boolean` | `Default: false`
 
-### Include: SCSS
+Submit form on page load.
 
-``` scss
-// @INSERT :: START @tag: scss-import 
-@import "components/_c-form";
-// @INSERT :: END
-```
+#### submitOnChange
+`Type: boolean` | `Default: true`
 
-### Include: JavaScript
+Submit form on change.
 
-#### Import
-``` js
-// @INSERT :: START @tag: js-import 
-import FormAjax from './modules/form/form-ajax';
-// @INSERT :: END
-```
+#### loadingClass
+`Type: string` | `Default: null`
 
-#### Initializing in Veams V2
-``` js
-// @INSERT :: START @tag: js-init-v2 
-/**
- * Init Form
- */
-Helpers.loadModule({
-	el: '[data-js-module="form-ajax"]',
-	module: FormAjax,
-	context: context
-});
-// @INSERT :: END
-```
+Optional class to be set while fetching data from server.
 
-#### Initializing in Veams V3
-``` js
-// @INSERT :: START @tag: js-init-v3  
-/**
- * Init Form
- */
-Helpers.loadModule({
-	domName: 'form-ajax',
-	module: FormAjax,
-	context: context
-});
-// @INSERT :: END
-```
+#### successClass
+`Type: string` | `Default: 'is-success'`
 
-#### Custom Events
-``` js
-// @INSERT :: START @tag: js-events //
-/**
- * Events Form
- */
-EVENTS.form = {
-	complete: 'form:complete',
-	reset: 'form:reset'
-};
-// @INSERT :: END
-```
+Class to be set after data was fetched successfully.
+
+#### errorClass
+`Type: string` | `Default: 'is-error'`
+
+Class to be set after fetching data failed for some reason.

@@ -15,6 +15,17 @@ This component is written as wrapWith template, so you have the possibility to p
 
 --- }}
 
-<form class="c-form{{#if options.context}}--{{options.context}}{{else}}--default{{/if}}{{#if options.classes}} {{options.classes}}{{/if}}" action="{{options.action}}" method="{{options.method}}" data-css="c-form"{{#if options.ajax}} data-js-module="form-ajax" data-js-options='{}'{{/if}}>
+
+<form class="c-form{{#if options.settings.formContextClass}}--{{options.settings.formContextClass}}{{else}}--default{{/if}}
+	{{#if options.settings.formClasses}} {{options.settings.formClasses}}{{/if}}"
+      action="/{{@root.metadata.country}}/{{@root.metadata.lang}}{{options.settings.formAction}}"
+      method="{{options.settings.formMethod}}"
+      data-css="c-form"
+	{{#if options.settings.formAjax}}
+	  data-js-module="form-ajax"
+		  {{#if options.settings.formJsOptions}} data-js-options='{
+            {{#each options.settings.formJsOptions}}"{{optionsKey}}": {{#unless optionsObject}}"{{/unless}}{{{optionsValue}}}{{#unless optionsObject}}"{{/unless}}{{#if @last}}{{else}}, {{/if}}{{/each}}
+         }'{{/if}}
+	{{/if}}>
 	{{{yield}}}
 </form>
