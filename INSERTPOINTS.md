@@ -17,14 +17,9 @@
 ### Include: SCSS
 
 ``` scss
-// @INSERT :: START @tag: scss-import //
-@import "components/_c-form";
-@import "components/_c-form__datepicker";
-// @INSERT :: END
-
 // @INSERT :: START @tag: scss-self-contained-import //   
-@import "../templating/partials/components/form/scss/_c-form";
-@import "../templating/partials/components/form/scss/_c-form__datepicker";
+@import "../components/form/scss/_c-form";
+@import "../components/form/scss/_c-form__datepicker";
 // @INSERT :: END
 ```
 
@@ -32,14 +27,9 @@
 
 #### Import
 ``` js
-// @INSERT :: START @tag: js-import //
-import FormAjax from './modules/form/form-ajax';
-import FormDatepicker from './modules/form/form-datepicker';
-// @INSERT :: END// 
-
 @INSERT :: START @tag: js-self-contained-import // 
-import FormAjax from '../templating/partials/components/form/js/form-ajax';
-import FormDatepicker from '../templating/partials/components/form/js/form-datepicker';
+import FormAjax from '../components/form/js/form-ajax';
+import FormDatepicker from '../components/form/js/form-datepicker';
 // @INSERT :: END
 ```
 
