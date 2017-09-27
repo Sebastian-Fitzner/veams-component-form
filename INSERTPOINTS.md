@@ -20,12 +20,12 @@
 // @INSERT :: START @tag: scss-import //
 @import "components/_c-form";
 @import "components/_c-form__datepicker";
-// @INSERT :: END
+// @INSERT :: END //
 
 // @INSERT :: START @tag: scss-self-contained-import //   
 @import "../templating/partials/components/form/scss/_c-form";
 @import "../templating/partials/components/form/scss/_c-form__datepicker";
-// @INSERT :: END
+// @INSERT :: END //
 ```
 
 ### Include: JavaScript
@@ -40,7 +40,7 @@ import FormDatepicker from './modules/form/form-datepicker';
 // @INSERT :: START @tag: js-self-contained-import // 
 import FormAjax from '../templating/partials/components/form/js/form-ajax';
 import FormDatepicker from '../templating/partials/components/form/js/form-datepicker';
-// @INSERT :: END
+// @INSERT :: END //
 ```
 
 #### Initializing in Veams V5
@@ -61,7 +61,7 @@ import FormDatepicker from '../templating/partials/components/form/js/form-datep
 	    namespace: 'form-datepicker',
 	    module: FormDatepicker
     }
-// @INSERT :: END
+// @INSERT :: END //
 ```
 
 #### Custom Events
@@ -74,5 +74,5 @@ EVENTS.form = {
 	complete: 'form:complete',
 	reset: 'form:reset'
 };
-// @INSERT :: END
+// @INSERT :: END //
 ```
