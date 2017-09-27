@@ -1,3 +1,6 @@
+### v4.0.2
+- Fix another insertpoints issue
+
 ### v4.0.1
 - Fix insertpoints
 
