@@ -2,11 +2,7 @@
  * Represents a ajax form class.
  *
  * @module FormAjax
-<<<<<<< HEAD
- * @version v1.0.5
-=======
- * @version v3.0.0
->>>>>>> dev
+ * @version v3.0.1
  *
  * @author Sebastian Fitzner
  */
@@ -42,7 +38,7 @@ class FormAjax extends VeamsComponent {
 	 */
 	static get info() {
 		return {
-			version: '3.0.0',
+			version: '3.0.1',
 			vc: true,
 			mod: false // set to true if source was modified in project
 		};

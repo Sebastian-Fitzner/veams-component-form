@@ -3,7 +3,7 @@
 ``` hbs
 {{! @INSERT :: START @id: form, @tag: component-partial }}
 {{! WrapWith START: Form Wrapper }}
-{{#with form-bp.variations.fields}}
+{{#with form-bp.variations.default}}
     {{#wrapWith "c-form" settings=settings}}
         {{#each content.fieldsets}}
             {{> c-form__fieldset}}
@@ -37,7 +37,7 @@ import FormAjax from './modules/form/form-ajax';
 import FormDatepicker from './modules/form/form-datepicker';
 // @INSERT :: END// 
 
-@INSERT :: START @tag: js-self-contained-import // 
+// @INSERT :: START @tag: js-self-contained-import // 
 import FormAjax from '../templating/partials/components/form/js/form-ajax';
 import FormDatepicker from '../templating/partials/components/form/js/form-datepicker';
 // @INSERT :: END
