@@ -53,8 +53,7 @@ import FormDatepicker from '../templating/partials/components/form/js/form-datep
     {
         namespace: 'form-ajax',
         module: FormAjax
-    )
-    ,
+    },
     /**
      * Init Form Datepicker
      */
