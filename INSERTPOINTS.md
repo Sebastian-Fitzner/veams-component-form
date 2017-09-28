@@ -43,14 +43,14 @@ import FormDatepicker from '../components/form/js/form-datepicker';
     {
         namespace: 'form-ajax',
         module: FormAjax
-    },
+    }//,
     /**
-     * Init Form Datepicker
+     * Init Form Datepicker (requires moment.js and pikaday.js)
      */
-    {
-	    namespace: 'form-datepicker',
-	    module: FormDatepicker
-    }
+    //{
+	    //namespace: 'form-datepicker',
+	    //module: FormDatepicker
+    //}
 // @INSERT :: END //
 ```
 

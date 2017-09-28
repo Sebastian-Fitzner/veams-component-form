@@ -1,3 +1,6 @@
+### v4.0.3
+- Do not initialize datepicker by default
+
 ### v4.0.2
 - Fix another insertpoints issue
 
