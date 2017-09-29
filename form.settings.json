@@ -20,8 +20,8 @@
 		"c-form__textarea.hbs"
 	],
 	"scssFiles": [
-		"c-form.scss",
-		"c-form__datepicker.scss"
+		"_c-form.scss",
+		"_c-form__datepicker.scss"
 	],
 	"jsFiles": [
 		"form-ajax.js",
