@@ -1,0 +1,30 @@
+{
+	"type": "component",
+	"displayName": "c-form",
+	"contextData": "form-bp",
+	"layout": "lyt-docs",
+	"subTemplates": [
+		"c-form.hbs",
+		"c-form__checkbox.hbs",
+		"c-form__checkbox-item.hbs",
+		"c-form__col.hbs",
+		"c-form__datepicker.hbs",
+		"c-form__fieldset.hbs",
+		"c-form__input.hbs",
+		"c-form__radio.hbs",
+		"c-form__radio-item.hbs",
+		"c-form__row.hbs",
+		"c-form__select.hbs",
+		"c-form__submit.hbs",
+		"c-form__text.hbs",
+		"c-form__textarea.hbs"
+	],
+	"scssFiles": [
+		"c-form.scss",
+		"c-form__datepicker.scss"
+	],
+	"jsFiles": [
+		"form-ajax.js",
+		"form-datepicker.js"
+	]
+}

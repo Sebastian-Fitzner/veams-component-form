@@ -1,21 +1,3 @@
-{{! ---
-component: form
-============================================
-
-Options:
-- options {Object} - Contains all options
-- options.context {String} - Context class
-- options.classes {String} - Modifier classes
-- options.action {String} - Form action
-- options.method {String} - Form method
-- options.ajax {Boolean} - Init form module
-
-Important Notes:
-This component is written as wrapWith template, so you have the possibility to place your custom content.
-
---- }}
-
-
 <form class="c-form{{#if options.settings.formContextClass}}--{{options.settings.formContextClass}}{{else}}--default{{/if}}
 	{{#if options.settings.formClasses}} {{options.settings.formClasses}}{{/if}}"
       action="/{{@root.metadata.country}}/{{@root.metadata.lang}}{{options.settings.formAction}}"

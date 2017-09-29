@@ -1,0 +1,7 @@
+{{! wrapWith START: Form }}
+{{#wrapWith "c-form" settings=settings}}
+	{{#each content.fieldsets}}
+		{{> c-form__fieldset}}
+	{{/each}}
+{{/wrapWith}}
+{{! wrapWith END: Form}}
