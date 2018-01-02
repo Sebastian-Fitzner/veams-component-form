@@ -8,8 +8,8 @@
  * @author Sebastian Fitzner
  */
 require('moment');
-import { Veams } from 'app';
-import VeamsComponent from 'veams/src/js/common/component';
+import { Veams } from 'app.veams';
+import VeamsComponent from 'veams/lib/common/component';
 const $ = Veams.$;
 const Pikaday = require('pikaday');
 

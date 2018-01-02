@@ -1,30 +1,29 @@
 {
 	"type": "component",
-	"displayName": "c-form",
 	"contextData": "form-bp",
 	"layout": "lyt-docs",
 	"subTemplates": [
-		"c-form.hbs",
-		"c-form__checkbox.hbs",
-		"c-form__checkbox-item.hbs",
-		"c-form__col.hbs",
-		"c-form__datepicker.hbs",
-		"c-form__fieldset.hbs",
-		"c-form__input.hbs",
-		"c-form__radio.hbs",
-		"c-form__radio-item.hbs",
-		"c-form__row.hbs",
-		"c-form__select.hbs",
-		"c-form__submit.hbs",
-		"c-form__text.hbs",
-		"c-form__textarea.hbs"
+		"templates/form.hbs",
+		"templates/form-fields/form__checkbox.hbs",
+		"templates/form-fields/form__checkbox-item.hbs",
+		"templates/form-fields/form__col.hbs",
+		"templates/form-fields/form__datepicker.hbs",
+		"templates/form-fields/form__fieldset.hbs",
+		"templates/form-fields/form__input.hbs",
+		"templates/form-fields/form__radio.hbs",
+		"templates/form-fields/form__radio-item.hbs",
+		"templates/form-fields/form__row.hbs",
+		"templates/form-fields/form__select.hbs",
+		"templates/form-fields/form__submit.hbs",
+		"templates/form-fields/form__text.hbs",
+		"templates/form-fields/form__textarea.hbs"
 	],
 	"scssFiles": [
-		"_c-form.scss",
-		"_c-form__datepicker.scss"
+		"styles/_form.scss",
+		"styles/_form__datepicker.scss"
 	],
 	"jsFiles": [
-		"form-ajax.js",
-		"form-datepicker.js"
+		"scripts/form-ajax.js",
+		"scripts/form-datepicker.js"
 	]
 }

@@ -6,9 +6,9 @@
 {{! @INSERT :: START @id: form, @tag: component-partial }}
 {{! WrapWith START: Form Wrapper }}
 {{#with form-bp.variations.default}}
-    {{#wrapWith "c-form" settings=settings}}
+    {{#wrapWith "form" settings=settings}}
         {{#each content.fieldsets}}
-            {{> c-form__fieldset}}
+            {{> form__fieldset}}
         {{/each}}
     {{/wrapWith}}
 {{/with}}
@@ -22,21 +22,11 @@
 
 ``` js
 // @INSERT :: START @tag: js-init-v5 //
-    ,
-    /**
-     * Init AJAX Form
-     */
-    {
-        namespace: 'form-ajax',
-        module: FormAjax
-    }//,
-    /**
-     * Init Form Datepicker (requires moment.js and pikaday.js)
-     */
-    //{
-	    //namespace: 'form-datepicker',
-	    //module: FormDatepicker
-    //}
+	// Init AJAX Form
+	Veams.modules.add({ namespace: 'form-ajax', module: FormAjax });
+	
+	// Init Form Datepicker (requires moment.js and pikaday.js)
+    //Veams.modules.add({ namespace: 'form-datepicker', module: FormDatepicker });
 // @INSERT :: END //
 ```
 
