@@ -8,12 +8,31 @@
  * @author Sebastian Fitzner
  */
 require('moment');
-import { Veams } from 'app.veams';
-import VeamsComponent from 'veams/lib/common/component';
-const $ = Veams.$;
+import $ from '@veams/query';
+import Component from '@veams/component';
 const Pikaday = require('pikaday');
 
-class FormDatepicker extends VeamsComponent {
+class FormDatepicker extends Component {
+	/**
+	 * General Properties
+	 */
+
+	// Elements in Markup
+	$el = $(this.el);
+	i18n = this.context.i18n && this.context.i18n.datepicker ? this.context.i18n.datepicker : this.i18nFallback;
+
+	this = this;
+	$input = $('input', this.$el);
+	dateFormat = i18n.calendarFormat;
+	datetimepicker = new Pikaday({
+		field: this.$input[0],
+		i18n: i18n,
+		container: this.el,
+		onSelect: function () {
+			_this.date = this.getMoment().format(_this.dateFormat);
+			_this.$input.val(_this.date);
+		}
+	});
 	/**
 	 * Constructor for our class
 	 *
@@ -69,26 +88,6 @@ class FormDatepicker extends VeamsComponent {
 			weekdaysShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 			calendarFormat: 'DD.MM.YYYY'
 		}
-	}
-
-	/**
-	 * Initialize class
-	 */
-	initialize() {
-		let i18n = Veams.i18n && Veams.i18n.datepicker ? Veams.i18n.datepicker : this.i18nFallback;
-
-		let _this = this;
-		this.$input = $('input', this.$el);
-		this.dateFormat = i18n.calendarFormat;
-		this.datetimepicker = new Pikaday({
-			field: this.$input[0],
-			i18n: i18n,
-			container: this.el,
-			onSelect: function () {
-				_this.date = this.getMoment().format(_this.dateFormat);
-				_this.$input.val(_this.date);
-			}
-		});
 	}
 }
 // Returns constructor

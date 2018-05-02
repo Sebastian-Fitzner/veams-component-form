@@ -5,7 +5,7 @@
 ``` hbs
 {{! @INSERT :: START @id: form, @tag: component-partial }}
 {{! WrapWith START: Form Wrapper }}
-{{#with form-bp.variations.default}}
+{{#with form.variations.default}}
     {{#wrapWith "form" settings=settings}}
         {{#each content.fieldsets}}
             {{> form__fieldset}}
@@ -18,15 +18,15 @@
 
 ### Include: JavaScript
 
-#### Initializing in Veams V5
+#### Initializing in Veams (@veams/plugin-modules v1.x)
 
 ``` js
-// @INSERT :: START @tag: js-init-v5 //
-	// Init AJAX Form
-	Veams.modules.add({ namespace: 'form-ajax', module: FormAjax });
-	
-	// Init Form Datepicker (requires moment.js and pikaday.js)
-    //Veams.modules.add({ namespace: 'form-datepicker', module: FormDatepicker });
+// @INSERT :: START @tag: js-init-@1 //
+// Init AJAX Form
+Veams.modules.add({ namespace: 'form-ajax', module: FormAjax });
+
+// Init Form Datepicker (requires moment.js and pikaday.js)
+// Veams.modules.add({ namespace: 'form-datepicker', module: FormDatepicker });
 // @INSERT :: END //
 ```
 

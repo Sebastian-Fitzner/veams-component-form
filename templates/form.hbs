@@ -1,12 +1,13 @@
-<form class="c-form{{#if options.settings.formContextClass}}--{{options.settings.formContextClass}}{{else}}--default{{/if}}
-	{{#if options.settings.formClasses}} {{options.settings.formClasses}}{{/if}}"
-      action="/{{@root.metadata.country}}/{{@root.metadata.lang}}{{options.settings.formAction}}"
-      method="{{options.settings.formMethod}}"
+<form class="c-form{{#if
+		props.settings.formContextClass}}--{{props.settings.formContextClass}}{{else}}--default{{/if}}
+	{{#if props.settings.formClasses}} {{props.settings.formClasses}}{{/if}}"
+      action="/{{@root.metadata.country}}/{{@root.metadata.lang}}{{props.settings.formAction}}"
+      method="{{props.settings.formMethod}}"
       data-css="c-form"
 	{{#if options.settings.formAjax}}
 	  data-js-module="form-ajax"
-		  {{#if options.settings.formJsOptions}} data-js-options='{
-            {{#each options.settings.formJsOptions}}"{{optionsKey}}": {{#unless optionsObject}}"{{/unless}}{{{optionsValue}}}{{#unless optionsObject}}"{{/unless}}{{#if @last}}{{else}}, {{/if}}{{/each}}
+		  {{#if props.settings.formJsOptions}} data-js-options='{
+            {{stringify props.settings.formJsOptions}}
          }'{{/if}}
 	{{/if}}>
 	{{{yield}}}
