@@ -21,7 +21,7 @@
 #### Initializing in Veams (@veams/plugin-modules v1.x)
 
 ``` js
-// @INSERT :: START @tag: js-init-@1 //
+// @INSERT :: START @tag: js-init-modules-@1 //
 // Init AJAX Form
 Veams.modules.add({ namespace: 'form-ajax', module: FormAjax });
 
