@@ -1,0 +1,18 @@
+{
+	"name": "@veams|component-form",
+	"version": "1.0.0",
+	"description": "The form component is a complete solution for your forms. It provides ajax functionality, a datepicker (pikaday.js), custom styles for checkboxes and radio buttons, jQuery-free",
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/Veams/component-form.git"
+	},
+	"keywords": [
+		"veams"
+	],
+	"author": "Sebastian Fitzner",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/Veams/component-form/issues"
+	},
+	"homepage": "https://github.com/Veams/component-form#readme"
+}

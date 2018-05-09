@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ### v3.0.3
 - Do not initialize datepicker by default
 
@@ -7,6 +8,41 @@
 ### v3.0.1
 - Fix insertpoints
 
+=======
+## Namespaced Versions
+
+### v1.0.0
+
+- Migrate to use 
+
+	**@veams/core**, **@veams/component**
+
+------------------
+
+### v5.1.0
+- Make component compatible with veams-cli@2.0.xx
+
+### v5.0.1
+- Fix scss file reference in settings 
+
+### v5.0.0
+- Update folder structure to be in sync with latest generator output
+- Remove import snippets from INSERTPOINTS.md
+
+### v4.0.3
+- Do not initialize datepicker by default
+
+### v4.0.2
+- Fix another insertpoints issue
+
+### v4.0.1
+- Fix insertpoints
+
+### v4.0.0
+- Update insertpoints paths for new folder structure (used in generator-veams v9.x)
+- Unify components folder structure
+
+>>>>>>> dev
 ### v3.0.0
 - Update source code to support Veams 5 framework
 

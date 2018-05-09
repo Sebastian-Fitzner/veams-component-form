@@ -1,12 +1,19 @@
+## Usage
+
 ### Include: Page
 
 ``` hbs
 {{! @INSERT :: START @id: form, @tag: component-partial }}
 {{! WrapWith START: Form Wrapper }}
+<<<<<<< HEAD
 {{#with form-bp.variations.default}}
     {{#wrapWith "c-form" settings=settings}}
+=======
+{{#with form.variations.default}}
+    {{#wrapWith "form" settings=settings}}
+>>>>>>> dev
         {{#each content.fieldsets}}
-            {{> c-form__fieldset}}
+            {{> form__fieldset}}
         {{/each}}
     {{/wrapWith}}
 {{/with}}
@@ -14,6 +21,7 @@
 {{! @INSERT :: END }}
 ```
 
+<<<<<<< HEAD
 ### Include: SCSS
 
 ``` scss
@@ -42,9 +50,14 @@ import FormAjax from '../templating/partials/components/form/js/form-ajax';
 import FormDatepicker from '../templating/partials/components/form/js/form-datepicker';
 // @INSERT :: END //
 ```
+=======
+### Include: JavaScript
 
-#### Initializing in Veams V5
+#### Initializing in Veams (@veams/plugin-modules v1.x)
+>>>>>>> dev
+
 ``` js
+<<<<<<< HEAD
 // @INSERT :: START @tag: js-init-v5 //
     ,
     /**
@@ -61,10 +74,19 @@ import FormDatepicker from '../templating/partials/components/form/js/form-datep
 	    //namespace: 'form-datepicker',
 	    //module: FormDatepicker
 	 //}
+=======
+// @INSERT :: START @tag: js-init-modules-@1 //
+// Init AJAX Form
+Veams.modules.add({ namespace: 'form-ajax', module: FormAjax });
+
+// Init Form Datepicker (requires moment.js and pikaday.js)
+// Veams.modules.add({ namespace: 'form-datepicker', module: FormDatepicker });
+>>>>>>> dev
 // @INSERT :: END //
 ```
 
 #### Custom Events
+
 ``` js
 // @INSERT :: START @tag: js-events //
 /**

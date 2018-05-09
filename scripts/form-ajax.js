@@ -2,15 +2,26 @@
  * Represents a ajax form class.
  *
  * @module FormAjax
+<<<<<<< HEAD:js/form-ajax.js
  * @version v3.0.3
+=======
+ * @version v1.0.0
+>>>>>>> dev:scripts/form-ajax.js
  *
  * @author Sebastian Fitzner
  */
-import { Veams } from 'app';
-import VeamsComponent from 'veams/src/js/common/component';
-const $ = Veams.$;
+import $ from '@veams/query';
+import Component from '@veams/component';
 
-class FormAjax extends VeamsComponent {
+class FormAjax extends Component {
+	/**
+	 * General Properties
+	 */
+
+	// Elements in Markup
+	$el = $(this.el);
+	fields = $('input', this.$el);
+	selects = $('select', this.$el);
 	/**
 	 * Constructor for our class
 	 *
@@ -38,17 +49,20 @@ class FormAjax extends VeamsComponent {
 	 */
 	static get info() {
 		return {
+<<<<<<< HEAD:js/form-ajax.js
 			version: '3.0.3',
+=======
+			version: '1.0.0',
+>>>>>>> dev:scripts/form-ajax.js
 			vc: true,
 			mod: false // set to true if source was modified in project
 		};
 	}
 
-	initialize() {
-		// save some references
-		this.fields = $('input', this.$el);
-		this.selects = $('select', this.$el);
-
+	/** =================================================
+	 * STANDARD METHODS
+	 * ================================================= */
+	didMount() {
 		// Fetch data if option is true
 		if (this.options.submitOnLoad) {
 			this.fetchData(this.$el);
@@ -59,7 +73,7 @@ class FormAjax extends VeamsComponent {
 	}
 
 	/**
-	 * Bind all evente
+	 * Bind all events
 	 */
 	bindEvents() {
 		let fnFetchData = this.fetchData.bind(this);
@@ -67,12 +81,12 @@ class FormAjax extends VeamsComponent {
 		/**
 		 * On submit event fetch data
 		 */
-		this.$el.on(Veams.EVENTS.submit + ' ' + Veams.EVENTS.reset, fnFetchData);
+		this.$el.on(this.context.EVENTS.submit + ' ' + this.context.EVENTS.reset, fnFetchData);
 
 		/**
 		 * Reset filters on reset event
 		 */
-		Veams.Vent.on(Veams.EVENTS.form.reset, fnReset);
+		this.context.Vent.on(this.context.EVENTS.form.reset, fnReset);
 
 		/**
 		 * If submitOnChange is true
@@ -82,7 +96,7 @@ class FormAjax extends VeamsComponent {
 		 *
 		 */
 		if (this.options.submitOnChange) {
-			this.$el.on(Veams.EVENTS.blur + ' ' + Veams.EVENTS.change, this.fields, fnFetchData);
+			this.$el.on(this.context.EVENTS.blur + ' ' + this.context.EVENTS.change, this.fields, fnFetchData);
 		}
 	}
 
@@ -129,7 +143,7 @@ class FormAjax extends VeamsComponent {
 		this.fields = $('input', this.$el);
 		this.selects = $('select', this.$el);
 
-		Veams.Vent.trigger(this.options.eventName, {
+		this.context.Vent.trigger(this.options.eventName, {
 			data: data,
 			el: el
 		});
