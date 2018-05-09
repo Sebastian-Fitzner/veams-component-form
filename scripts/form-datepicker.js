@@ -17,7 +17,7 @@ class FormDatepicker extends Component {
 	 * General Properties
 	 */
 
-	// Elements in Markup
+		// Elements in Markup
 	$el = $(this.el);
 	i18n = this.context.i18n && this.context.i18n.datepicker ? this.context.i18n.datepicker : this.i18nFallback;
 

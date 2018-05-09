@@ -2,11 +2,7 @@
  * Represents a ajax form class.
  *
  * @module FormAjax
-<<<<<<< HEAD:js/form-ajax.js
- * @version v3.0.3
-=======
  * @version v1.0.0
->>>>>>> dev:scripts/form-ajax.js
  *
  * @author Sebastian Fitzner
  */
@@ -18,7 +14,7 @@ class FormAjax extends Component {
 	 * General Properties
 	 */
 
-	// Elements in Markup
+		// Elements in Markup
 	$el = $(this.el);
 	fields = $('input', this.$el);
 	selects = $('select', this.$el);
@@ -49,11 +45,7 @@ class FormAjax extends Component {
 	 */
 	static get info() {
 		return {
-<<<<<<< HEAD:js/form-ajax.js
-			version: '3.0.3',
-=======
 			version: '1.0.0',
->>>>>>> dev:scripts/form-ajax.js
 			vc: true,
 			mod: false // set to true if source was modified in project
 		};

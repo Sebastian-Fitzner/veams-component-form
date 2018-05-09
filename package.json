@@ -1,5 +1,5 @@
 {
-	"name": "@veams|component-form",
+	"name": "@veams/component-form",
 	"version": "1.0.0",
 	"description": "The form component is a complete solution for your forms. It provides ajax functionality, a datepicker (pikaday.js), custom styles for checkboxes and radio buttons, jQuery-free",
 	"repository": {

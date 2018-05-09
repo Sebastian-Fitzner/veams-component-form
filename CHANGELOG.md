@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-### v3.0.3
-- Do not initialize datepicker by default
-
-### v3.0.2
-- Fix another insertpoints issue
-
-### v3.0.1
-- Fix insertpoints
-
-=======
 ## Namespaced Versions
 
 ### v1.0.0
@@ -42,7 +31,6 @@
 - Update insertpoints paths for new folder structure (used in generator-veams v9.x)
 - Unify components folder structure
 
->>>>>>> dev
 ### v3.0.0
 - Update source code to support Veams 5 framework
 
